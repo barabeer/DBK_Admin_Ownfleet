@@ -1,24 +1,37 @@
-<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "9bf4cb42-b5b7-46ac-9d71-6d9995b9d1e9",
-    });
-
-    // ฟังก์ชันสำหรับกดเช็ค ID
-    window.checkMyID = async function() {
-      const id = await OneSignal.User.PushSubscription.id;
-      if (id) {
-        alert("ID เครื่องของคุณคือ:\n" + id);
-      } else {
-        alert("ยังไม่มี ID กรุณากดปุ่ม 'กระดิ่ง' เพื่ออนุญาตแจ้งเตือนก่อนครับ");
-        OneSignal.Slidedown.promptPush(); // บังคับให้หน้าต่างขออนุญาตเด้งขึ้นมา
-      }
-    };
-  });
-</script>
-
-<button onclick="checkMyID()" style="position:fixed; bottom:20px; right:20px; z-index:9999; padding:10px; background:#4f46e5; color:white; border-radius:5px; border:none;">
-  เช็ค ID แจ้งเตือน
-</button>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DBK LOGISTICS</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* ป้องกันการสกอลล์ซ้ำซ้อนภายนอก */
+    }
+    .container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <iframe 
+      src="https://script.google.com/macros/s/AKfycbynF_5yL2kZVTuIGwIrh5QrrOEuBighixoouBK1gJshsq3-0fNidSf91qVmFhm8K6Jnvw/exec?p=admin" 
+      allow="geolocation; microphone; camera" 
+      sandbox="allow-scripts allow-same-origin allow-forms">
+    </iframe>
+  </div>
+</body>
+</html>
